@@ -1,16 +1,25 @@
 To Do:
 
-[ ]    Add correct idomatic python coding style __main__
+[X]    Add correct idomatic python coding style __main__
 
-[ ]    function-alize the script. Make a function for the output ("def
-output", for instance), 
-        one that handles language, one that handles the command line
+[?]    function-alize the script. Make a function for the output ("def
+output", for instance), one that handles language, one that handles the command line
 interface. 
+  - WIP: Going overboard with this isn't productive. Keeping it simple
+    is better. Mostly this is is just adding more words to a simple
+script without good reason. Allowing it to stay simple for now. May come
+back to this if there is value
 
-[ ]    Add file handling. The python CSV library seems like an ideal
-place to start. 
+[ ]    Add file handling. 
+  [ ] file_io is simple. Implement that first
+  [ ] Upgrade to the python CSV library if there is value to that
 
-[ ]    Localization
+[ ] Multiple file outputs. With file handling decided and implemented,
+now we need multiple files. 
+  [ ] Decide what files would be best to output and implement that. 
+  [ ] Make a directory to keep them in
+
+[ ]    Localization support for the following languages
 
     * [bg_BG](http://fake-factory.readthedocs.org/en/master/locales/bg_BG.html)
     * [cs_CZ](http://fake-factory.readthedocs.org/en/master/locales/cs_CZ.html)
