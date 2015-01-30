@@ -4,20 +4,37 @@ To Do:
 
 [?]    function-alize the script. Make a function for the output ("def
 output", for instance), one that handles language, one that handles the command line
-interface. 
+interface.
   - WIP: Going overboard with this isn't productive. Keeping it simple
     is better. Mostly this is is just adding more words to a simple
 script without good reason. Allowing it to stay simple for now. May come
-back to this if there is value
+back to this if there is value. Will follow up with Nick/Brian
 
-[ ]    Add file handling. 
+[ ] Add file handling.
   [ ] file_io is simple. Implement that first
   [ ] Upgrade to the python CSV library if there is value to that
 
+
 [ ] Multiple file outputs. With file handling decided and implemented,
-now we need multiple files. 
-  [ ] Decide what files would be best to output and implement that. 
+now we need multiple files.
+  [ ] Decide what files would be best to output and implement that.
   [ ] Make a directory to keep them in
+
+[ ] Boundary testing support
+  [ ] Empty files
+  [ ] White space
+  [ ] Boundary
+  [ ] Special Characters
+    [ ] HTML - Broken and whole
+    [ ] Ruby - Broken and whole
+    [ ] JS - Broken and whole
+    [ ] SQL - Broken and whole
+
+[ ] Implementing many single purpose scripts at first seems to be a good
+idea
+  [ ] When a collection of working input scripts exist in the repo,
+begin work on rolling it all into one utility script
+
 
 [ ]    Localization support for the following languages
 
