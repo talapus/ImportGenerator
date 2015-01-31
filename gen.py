@@ -7,10 +7,11 @@ from faker import Faker
 
 def main():
     if len(sys.argv) <= 1:
-        print "How many?"
+        print "Usage: gen # "
     else:
         fake = Faker()
-        with open("testfile.csv", "wb") as output:
+        filename = str(fake.md5()) + ".csv"
+        with open(filename, "wb") as output:
             csvWriter = csv.writer(output)
             zlist = ["Unique ID", "First Name", "Last Name", "Email", "Registration Code",\
                 "Show on Attendee List", "Company Name", "Job Title", "Brief Bio",\
@@ -26,6 +27,7 @@ def main():
                     fake.state(), fake.postcode(), fake.country(), fake.url(),\
                     fake.url(), " ", " ", " ", " ", ]
                 csvWriter.writerow(ylist)
+            print "File output as ", filename
 
 if __name__ == '__main__':
     main()
