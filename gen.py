@@ -8,9 +8,9 @@ from faker import Faker
 
 def main():
     if len(sys.argv) <= 1:
-        print "Usage: gen # "
+        print ("Usage: gen # ")
     else:
-        fake = Faker('en_US')
+        fake = Faker('bg_BG')
         dName = "import" + str(time())
         filename = "en_US.csv"
         if not os.path.exists(dName):
@@ -31,19 +31,28 @@ def main():
                     fake.state(), fake.postcode(), fake.country(), fake.url(),\
                     fake.url(), " ", " ", " ", " ", ]
                 csvWriter.writerow(ylist)
-            print "{0}/{1}".format(dName, filename)
+            print ("{0}/{1}").format(dName, filename)
 
 if __name__ == '__main__':
     main()
 
 '''
 
+---  python2 -----
 Traceback (most recent call last):
     File "./gen.py", line 37, in <module>
         main()
     File "./gen.py", line 33, in main
         csvWriter.writerow(ylist)
 UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-4: ordinal not in range(128)
+
+--- python3 ---
+▶ python3 gen.py 2
+Traceback (most recent call last):
+    File "gen.py", line 7, in <module>
+        from faker import Faker
+ImportError: No module named 'faker'
+
 
 
 locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
