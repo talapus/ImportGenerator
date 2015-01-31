@@ -23,23 +23,12 @@ now we need multiple files.
   [ ] Make a directory to keep them in
 
 [ ] Boundary testing support?
-  [ ] Empty files
-  [ ] White space
-  [ ] Boundary
-  [ ] Special Characters
-    [ ] HTML - Broken and whole
-    [ ] Ruby - Broken and whole
-    [ ] JS - Broken and whole
-    [ ] SQL - Broken and whole
-
-[ ] Implementing many single purpose scripts at first seems to be a good
-idea
-  [ ] When a collection of working input scripts exist in the repo,
-begin work on rolling it all into one utility script
-
+  [ ] White space characters
+  [ ] Lots of data in each cell
+  [ ] Special Characters in each cell
+  [ ] Empty cells in each required category
 
 [ ]    Localization support for the following languages
-
     * [bg_BG](http://fake-factory.readthedocs.org/en/master/locales/bg_BG.html)
     * [cs_CZ](http://fake-factory.readthedocs.org/en/master/locales/cs_CZ.html)
     * [de_DE](http://fake-factory.readthedocs.org/en/master/locales/de_DE.html)
