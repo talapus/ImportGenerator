@@ -3,14 +3,15 @@
 import sys
 import csv
 import os
+from time import time
 from faker import Faker
 
 def main():
     if len(sys.argv) <= 1:
         print "Usage: gen # "
     else:
-        fake = Faker()
-        dName = str(fake.postalcode_plus4())
+        fake = Faker('en_US')
+        dName = "import" + str(time())
         filename = "en_US.csv"
         if not os.path.exists(dName):
             os.makedirs(dName)
@@ -36,6 +37,14 @@ if __name__ == '__main__':
     main()
 
 '''
+
+Traceback (most recent call last):
+    File "./gen.py", line 37, in <module>
+        main()
+    File "./gen.py", line 33, in main
+        csvWriter.writerow(ylist)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-4: ordinal not in range(128)
+
 
 locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
         "en_CA", "en_GB", "en_US", "es_ES", "es_MX",\
