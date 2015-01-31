@@ -30,12 +30,24 @@ def main():
                     fake.state(), fake.postcode(), fake.country(), fake.url(),\
                     fake.url(), " ", " ", " ", " ", ]
                 csvWriter.writerow(ylist)
-            print "{0}/{1}".format(dName, filename)
+            print "File output as ", filename
 
 if __name__ == '__main__':
     main()
 
 '''
+
+dName = fake.postalcode_plus4()
+
+
+if not os.path.exists(dName):
+    os.makedirs(dName)
+
+
+print "{} created", dName
+
+
+
 
 locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
         "en_CA", "en_GB", "en_US", "es_ES", "es_MX",\
