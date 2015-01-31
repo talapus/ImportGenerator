@@ -4,13 +4,12 @@ import sys
 import csv
 from faker import Faker
 
-
 def main():
     if len(sys.argv) <= 1:
         print "Usage: gen # "
     else:
         fake = Faker()
-        filename = str(fake.md5()) + ".csv"
+        filename = str(fake.postalcode()) + ".csv"
         with open(filename, "wb") as output:
             csvWriter = csv.writer(output)
             zlist = ["Unique ID", "First Name", "Last Name", "Email", "Registration Code",\
@@ -31,4 +30,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
