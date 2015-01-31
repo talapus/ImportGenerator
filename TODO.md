@@ -10,9 +10,11 @@ interface.
 script without good reason. Allowing it to stay simple for now. May come
 back to this if there is value. Will follow up with Nick/Brian
 
-[ ] Add file handling.
-  [ ] file_io is simple. Implement that first
-  [ ] Upgrade to the python CSV library if there is value to that
+[x] Add file handling.
+  [x] file_io is simple. Implement that first
+  [x] Upgrade to the python CSV library if there is value to that. As it
+turned out, the CSV lib made it a shit ton easier. I might go back and
+implement the file_io way as a learning exercise. 
 
 
 [ ] Multiple file outputs. With file handling decided and implemented,
@@ -20,7 +22,7 @@ now we need multiple files.
   [ ] Decide what files would be best to output and implement that.
   [ ] Make a directory to keep them in
 
-[ ] Boundary testing support
+[ ] Boundary testing support?
   [ ] Empty files
   [ ] White space
   [ ] Boundary
