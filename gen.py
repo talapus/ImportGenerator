@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import sys
 import csv
 import os
 from time import time
 from faker import Faker
+
 
 def main():
     if len(sys.argv) <= 1:
@@ -17,18 +19,18 @@ def main():
             os.makedirs(dName)
         with open("{0}/{1}".format(dName,filename), "wb") as output:
             csvWriter = csv.writer(output)
-            zlist = ["Unique ID", "First Name", "Last Name", "Email", "Registration Code",\
-                "Show on Attendee List", "Company Name", "Job Title", "Brief Bio",\
-                "Work Phone", "Mobile Phone", "Other Phone", "Other Phone Type",\
-                "Address", "Address 2", "City", "State", "Zipcode", "Country",\
-                "Website", "Website 2", "Linkedin URL", "Twitter URL", "Facebook URL",\
+            zlist = ["Unique ID", "First Name", "Last Name", "Email", "Registration Code",
+                "Show on Attendee List", "Company Name", "Job Title", "Brief Bio",
+                "Work Phone", "Mobile Phone", "Other Phone", "Other Phone Type",
+                "Address", "Address 2", "City", "State", "Zipcode", "Country",
+                "Website", "Website 2", "Linkedin URL", "Twitter URL", "Facebook URL",
                 "Group List (comma-separated)"]
             csvWriter.writerow(zlist)
             for i in range(0,int(sys.argv[1])):
-                ylist = ["A-{0}".format(i), fake.first_name(), fake.last_name(),\
-                    fake.email(), " ", "FALSE", fake.word(), fake.slug(), fake.bs(),\
+                ylist = ["A-{0}".format(i), fake.first_name(), fake.last_name(),
+                    fake.email(), " ", "FALSE", fake.word(), fake.slug(), fake.slug(),
                     fake.phone_number(), " ", " ", " ", " ", " ", fake.city(),
-                    fake.state(), fake.postcode(), fake.country(), fake.url(),\
+                    fake.state(), fake.postcode(), fake.country(), fake.url(),
                     fake.url(), " ", " ", " ", " ", ]
                 csvWriter.writerow(ylist)
             print ("{0}/{1}").format(dName, filename)
@@ -37,23 +39,6 @@ if __name__ == '__main__':
     main()
 
 '''
-
----  python2 -----
-Traceback (most recent call last):
-    File "./gen.py", line 37, in <module>
-        main()
-    File "./gen.py", line 33, in main
-        csvWriter.writerow(ylist)
-UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-4: ordinal not in range(128)
-
---- python3 ---
-▶ python3 gen.py 2
-Traceback (most recent call last):
-    File "gen.py", line 7, in <module>
-        from faker import Faker
-ImportError: No module named 'faker'
-
-
 
 locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
         "en_CA", "en_GB", "en_US", "es_ES", "es_MX",\
