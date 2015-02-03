@@ -35,3 +35,37 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+'''
+
+---  python2 -----
+Traceback (most recent call last):
+    File "./gen.py", line 37, in <module>
+        main()
+    File "./gen.py", line 33, in main
+        csvWriter.writerow(ylist)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-4: ordinal not in range(128)
+
+--- python3 ---
+▶ python3 gen.py 2
+Traceback (most recent call last):
+    File "gen.py", line 7, in <module>
+        from faker import Faker
+ImportError: No module named 'faker'
+
+
+
+locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
+        "en_CA", "en_GB", "en_US", "es_ES", "es_MX",\
+        "fa_IR", "fi_FI", "fr_FR", "hi_IN", "it_IT",\
+        "ko_KR", "lt_LT", "lv_LV", "nl_NL", "pl_PL",\
+        "pt_BR", "ru_RU", "sl_SI", "zh_CN", "zh_TW"]
+
+print "Number of locales: ", len(locale)
+print "Locale 1: ", locale[1]
+print "All locales: ", locale
+for i in locale:
+    print i
+print "locale pop: ", locale.pop()
+
+'''
