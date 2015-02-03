@@ -1,0 +1,14 @@
+Import interface locations:
+
+Content	Keyword 		Outpout
+		Organizations	Organizations
+		Activities		Activities
+		People			People
+		locations  		Geo Locations
+		Tracks 			Tracks
+		Pages 			Pages
+
+Attendees:
+		Attendees 		Invited Attendees
+		Schedules 		Attendee Schedules
+		Appointments 	Appointments
