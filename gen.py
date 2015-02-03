@@ -12,9 +12,10 @@ def main():
     if len(sys.argv) <= 1:
         print ("Usage: gen # ")
     else:
-        fake = Faker('en_US')
+        locale = 'en_US'
+        fake = Faker(locale)
         dName = "import" + str(time())
-        filename = "en_US.csv"
+        filename = locale + ".csv"
         if not os.path.exists(dName):
             os.makedirs(dName)
         with open("{0}/{1}".format(dName,filename), "wb") as output:
@@ -40,10 +41,30 @@ if __name__ == '__main__':
 
 '''
 
-locale = ["bg_BG", "cs_CZ", "de_DE", "dk_DK", "el_GR",\
-        "en_CA", "en_GB", "en_US", "es_ES", "es_MX",\
-        "fa_IR", "fi_FI", "fr_FR", "hi_IN", "it_IT",\
-        "ko_KR", "lt_LT", "lv_LV", "nl_NL", "pl_PL",\
-        "pt_BR", "ru_RU", "sl_SI", "zh_CN", "zh_TW"]
+locales = ['bg_BG',
+        'cs_CZ',
+        'de_DE',
+        'dk_DK',
+        'el_GR',
+        'en_CA',
+        'en_GB',
+        'en_US',
+        'es_ES',
+        'es_MX',
+        'fa_IR',
+        'fi_FI',
+        'fr_FR',
+        'hi_IN',
+        'it_IT',
+        'ko_KR',
+        'lt_LT',
+        'lv_LV',
+        'nl_NL',
+        'pl_PL',
+        'pt_BR',
+        'ru_RU',
+        'sl_SI',
+        'zh_CN',
+        'zh_TW' ]
 
 '''
