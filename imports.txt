@@ -1,14 +1,14 @@
 Import interface locations:
 
 Content
-		Organizations	Organizations
-		Activities		Activities
-		People		    People
-		locations  		Geo Locations
-		Tracks 			  Tracks
-		Pages 			  Pages
+  Organizations   Organizations
+  Activities      Activities
+  People          People
+  Locations       Geo Locations
+  Tracks          Tracks
+  Pages           Pages
 
 Attendees:
-		Attendees 		Invited Attendees
-		Schedules 		Attendee Schedules
-		Appointments 	Appointments
+  Attendees       Invited Attendees
+  Schedules       Attendee Schedules
+  Appointments    Appointments
