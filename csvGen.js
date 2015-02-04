@@ -42,18 +42,6 @@ if (!process.argv[2]) {
 }
 
 /*
-                ylist = ["A-{0}".format(i), firstName, lastName,
-                    email, " ", "FALSE", word, slug1, slug2,
-                    phoneNumber, " ", " ", " ", " ", " ", city,
-                    slug3, postCode, country, url1,
-                    url2, " ", " ", " ", " ", ]
-                csvWriter.writerow(ylist)
-            print ("{0}/{1}").format(dName, filename)
-
-if __name__ == '__main__':
-    main()
-
-'''
 
 locales = ['bg_BG',
         'cs_CZ',
@@ -81,13 +69,9 @@ locales = ['bg_BG',
         'zh_CN',
         'zh_TW' ]
 
-'''
-
-*/
-
 /*
  * ToDo:
- * [ ] Functional: output onto the command line for > filename.csv
+ * [X] Functional: output onto the command line for > filename.csv
  * [ ] Output files. Create a directory to contain them
  * [ ] Localization. Drop files named by locale into the folder
  */
