@@ -12,7 +12,7 @@ def main():
     if len(sys.argv) <= 1:
         print ("Usage: gen # ")
     else:
-        locale = 'en_US'
+        locale = 'zh_TW'
         fake = Faker(locale)
         dName = "import" + str(time())
         filename = locale + ".csv"
@@ -31,9 +31,9 @@ def main():
                 ylist = ["A-{0}".format(i), fake.first_name(), fake.last_name(),
                     fake.email(), " ", "FALSE", fake.word(), fake.slug(), fake.slug(),
                     fake.phone_number(), " ", " ", " ", " ", " ", fake.city(),
-                    fake.state(), fake.postcode(), fake.country(), fake.url(),
+                    fake.slug(), fake.postcode(), fake.country(), fake.url(),
                     fake.url(), " ", " ", " ", " ", ]
-                csvWriter.writerow(ylist)
+                csvWriter.writerow(str(ylist).encode('utf-8'))
             print ("{0}/{1}").format(dName, filename)
 
 if __name__ == '__main__':
