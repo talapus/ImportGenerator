@@ -28,12 +28,25 @@ def main():
                 "Group List (comma-separated)"]
             csvWriter.writerow(zlist)
             for i in range(0,int(sys.argv[1])):
-                ylist = ["A-{0}".format(i), fake.first_name(), fake.last_name(),
-                    fake.email(), " ", "FALSE", fake.word(), fake.slug(), fake.slug(),
-                    fake.phone_number(), " ", " ", " ", " ", " ", fake.city(),
-                    fake.slug(), fake.postcode(), fake.country(), fake.url(),
-                    fake.url(), " ", " ", " ", " ", ]
-                csvWriter.writerow(str(ylist).encode('utf-8'))
+                firstName = u'{}'.format(fake.first_name())
+                lastName = u'{}'.format(fake.last_name())
+                email = u'{}'.format(fake.email())
+                word = u'{}'.format(fake.word())
+                slug1 = u'{}'.format(fake.slug())
+                slug2 = u'{}'.format(fake.slug())
+                phoneNumber = u'{}'.format(fake.phone_number())
+                city = u'{}'.format(fake.city())
+                slug3 = u'{}'.format(fake.slug())
+                postCode = u'{}'.format(fake.postcode())
+                country = u'{}'.format(fake.country())
+                url1 = u'{}'.format(fake.url())
+                url2 = u'{}'.format(fake.url())
+                ylist = ["A-{0}".format(i), firstName, lastName,
+                    email, " ", "FALSE", word, slug1, slug2,
+                    phoneNumber, " ", " ", " ", " ", " ", city,
+                    slug3, postCode, country, url1,
+                    url2, " ", " ", " ", " ", ]
+                csvWriter.writerow(ylist)
             print ("{0}/{1}").format(dName, filename)
 
 if __name__ == '__main__':
