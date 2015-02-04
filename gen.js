@@ -99,8 +99,3 @@ To Do:
     * [zh_CN](http://fake-factory.readthedocs.org/en/master/locales/zh_CN.html)
     * [zh_TW](http://fake-factory.readthedocs.org/en/master/locales/zh_TW.html)
 '''
-
-
-
-if __name__ == '__main__':
-        print main()
