@@ -3,12 +3,18 @@
 var fake = require('faker');
 var fs = require('fs');
 
-var stream = fs.createWriteStream("my_file.txt");
-myName = fake.name.firstName();
-stream.once('open', function(fd) {
-  stream.write(fake.name.firstName());
-  // stream.write("My second row\n");
-  stream.end();
-});
+if (!process.argv[2] || isNaN(+process.argv[2])) {
+  console.log("Gruh?");
+} else { // only write a file if the user indicates how many records
+  userInput = +process.argv[2];
+  var stream = fs.createWriteStream("en_US.csv");
+  stream.once('open', function(fd) {
+    for (i=0; i<userInput; i++) {
+      stream.write(fake.name.firstName() + "\n");
+    }
+    stream.end();
+  });
+}
 
-console.log("File output as my_file.txt");
+
+console.log("en_US.csv");
