@@ -9,4 +9,4 @@ stream.once('open', function(fd) {
   stream.end();
 });
 
-console.log("File output as my_file.txt");
+console.log("Generated: my_file.txt");
