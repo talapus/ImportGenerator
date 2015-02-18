@@ -11,11 +11,15 @@ var Job = function() { return(fake.company.catchPhraseAdjective() + " " + fake.c
 var loopCheck = true;
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
-  console.log("Usage: csvGen #");
+  console.log("Usage: csvGen # locale import") 
+  console.log("---------------------------------");
+  console.log("Locales | de, de_AT, de_CH, en, en_AU, en_BORK, en_CA, en_GB, en_IND, en_US, en_au_ocker, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
+  console.log("Imports | Invitees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
 
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
   //for (z=0; z<locale.length; z++) { // for statement should probably go here
+    //fake.locale = locale[z];
     fake.locale = "zh_CN";
     var stream = fs.createWriteStream(fake.locale + ".csv");
 
@@ -27,6 +31,23 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
         }
         stream.end();
         console.log(fake.locale + ".csv created");
-    //}
-  });
+    });
+  //}
 }
+
+/*
+Import interface locations:
+
+Content
+  Organizations   Organizations
+  Activities      Activities
+  People          People
+  Locations       Geo Locations
+  Tracks          Tracks
+  Pages           Pages
+
+Attendees:
+  Attendees       Invited Attendees
+  Schedules       Attendee Schedules
+  Appointments    Appointments
+*/
