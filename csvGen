@@ -17,10 +17,8 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
 
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
-  //for (z=0; z<locale.length; z++) { // for statement should probably go here
-    //fake.locale = locale[z];
     fake.locale = "zh_CN";
-    var stream = fs.createWriteStream(fake.locale + fileType + ".csv");
+    var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
     stream.once('open', function(fd) {
       stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,\
@@ -32,9 +30,8 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
           stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + Company() + ", " + Job() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", \n");
         }
         stream.end();
-        console.log(fake.locale + "_" + fileType + ".csv created");
+        console.log(fake.locale +"_"+ fileType + ".csv created");
     });
-  //}
 }
 
 /*
