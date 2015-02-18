@@ -7,11 +7,10 @@ var fs = require('fs');
 var URL = function() { return("http://www." + fake.internet.domainName() + "/" + fake.lorem.words(1)); };
 var Company = function() { return(fake.company.bsAdjective() + " " + fake.company.bsNoun())};
 var Job = function() { return(fake.company.catchPhraseAdjective() + " " + fake.company.catchPhraseNoun() + " Specialist") };
-
-var loopCheck = true;
+var fileType = "invitees"; // global until the logic is added for other types
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
-  console.log("Usage: csvGen # locale import") 
+  console.log("Usage: csvGen # locale import")
   console.log("---------------------------------");
   console.log("Locales | de, de_AT, de_CH, en, en_AU, en_BORK, en_CA, en_GB, en_IND, en_US, en_au_ocker, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
   console.log("Imports | Invitees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
@@ -21,22 +20,25 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
   //for (z=0; z<locale.length; z++) { // for statement should probably go here
     //fake.locale = locale[z];
     fake.locale = "zh_CN";
-    var stream = fs.createWriteStream(fake.locale + ".csv");
+    var stream = fs.createWriteStream(fake.locale + fileType + ".csv");
 
     stream.once('open', function(fd) {
-      stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name, Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2, City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL, Group List (comma-separated)\n");
+      stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,\
+                   Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2,\
+                   City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL,\
+                   Group List (comma-separated)\n");
 
         for (i=0; i<userInput; i++) {
           stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + Company() + ", " + Job() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", \n");
         }
         stream.end();
-        console.log(fake.locale + ".csv created");
+        console.log(fake.locale + "_" + fileType + ".csv created");
     });
   //}
 }
 
 /*
-Import interface locations:
+ * FileType: / Import interface locations:
 
 Content
   Organizations   Organizations
