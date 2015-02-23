@@ -16,9 +16,6 @@ var fileType = "invitees"; // global until the logic is added for other types
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
   console.log("Usage: csvGen # "); //locale import")
-  //console.log("---------------------------------");
-  //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
-  //console.log("Imports | Invitees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
 
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
@@ -38,20 +35,3 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
         console.log(fake.locale +"_"+ fileType + ".csv created");
     });
 }
-
-/*
- * FileType: / Import interface locations:
-
-Content
-  Organizations   Organizations
-  Activities      Activities
-  People          People
-  Locations       Geo Locations
-  Tracks          Tracks
-  Pages           Pages
-
-Attendees:
-  Attendees       Invited Attendees
-  Schedules       Attendee Schedules
-  Appointments    Appointments
-*/
