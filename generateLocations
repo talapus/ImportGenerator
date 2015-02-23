@@ -15,7 +15,7 @@ var yesOrNo = function() {
 var URL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
 var Company = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
 var Job = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
-var Name = function() { return(fake.name.firstName() + " " + fake.name.lastName()) };
+var FullName = function() { return(fake.name.firstName() + " " + fake.name.lastName()) };
 var fileType = "locations"; // global until the logic is added for other types
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
@@ -30,7 +30,7 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
       stream.write("Unique ID,Name,Description,Address,Address 2,City,State,Country,Zipcode,Phone Work,Phone Mobile, Phone Other,Phone Other Type,Email,Email 2,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Always show this location on the map?\n");
 
         for (i=0; i<userInput; i++) {
-          stream.write("A-" + (i+1) + ", " + Name() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
+          stream.write("A-" + (i+1) + ", " + FullName() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
         }
         stream.end();
         console.log(fake.locale +"_"+ fileType + ".csv created");
