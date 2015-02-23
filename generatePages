@@ -3,15 +3,7 @@
 var fake = require('faker');
 var fs = require('fs');
 
-// var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
 // var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
-var getSpecialism = function() {
-  specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
-  return (specialists[Math.floor(Math.random() * specialists.length)]);
-}
-var URL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
-var Company = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
-var Job = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
 var fileType = "invitees"; // global until the logic is added for other types
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
