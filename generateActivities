@@ -19,7 +19,7 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
 
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
-    fake.locale = "zh_CN"; // manual entry for now
+    fake.locale = "en"; // manual entry for now
     var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
     stream.once('open', function(fd) {
