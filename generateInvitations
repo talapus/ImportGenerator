@@ -11,14 +11,14 @@ var getSpecialism = function() {
 var URL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
 var Company = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
 var Job = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
-var fileType = "invites"; // global until the logic is added for other types
+var fileType = "invitations"; // global until the logic is added for other types
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
-  console.log("Usage: generateInvites # "); //locale import")
+  console.log("Usage: generateInvitations # "); //locale import")
 
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
-    fake.locale = "zh_CN"; // manual entry for now
+    fake.locale = "en"; // manual entry for now
     var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
     stream.once('open', function(fd) {
