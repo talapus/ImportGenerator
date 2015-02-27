@@ -10,8 +10,8 @@ var getReview = function (movie) {
         return("Woof.");
         break;
 
-        case 'monsters':
-        return("Rawr.");
+        case 'coffee':
+        return(String.fromCharCode(0x0000,0x2615));
         break;
 
         default:
@@ -20,8 +20,7 @@ var getReview = function (movie) {
 };
 
 if (!process.argv[2]) {
-  //console.log(String.fromCharCode(0x0000,0x2615));
-  console.log("Usage: kittens, puppies, or crocodiles");
+  console.log("Usage: kittens, puppies, or coffee");
 } else {
   userInput = process.argv[2];
   console.log(getReview(userInput));
