@@ -20,7 +20,7 @@ var getReview = function (movie) {
 };
 
 if (!process.argv[2]) {
-  console.log(String.fromCharCode(0x0000,0x260a));
+  console.log(String.fromCharCode(0x0000,0x2615));
 } else {
   userInput = process.argv[2];
   getReview(userInput);
