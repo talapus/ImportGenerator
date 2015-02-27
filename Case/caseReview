@@ -3,11 +3,11 @@
 var getReview = function (movie) {
     switch (movie) {
         case 'kittens':
-        return("Purr");
+        return('Purr');
         break;
 
         case 'puppies':
-        return("Woof.");
+        return('Woof.');
         break;
 
         case 'coffee':
@@ -15,7 +15,7 @@ var getReview = function (movie) {
         break;
 
         default:
-        return("I don't know!");
+        return('I don\'t know!');
     }
 };
 
