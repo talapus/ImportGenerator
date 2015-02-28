@@ -20,6 +20,155 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 
+var getReview = function (file) {
+    switch (file) {
+
+        case 'Activities':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Name,Description,Activity Code,Track,Tags (comma-separated),Start Time,End Time,Location Name,Parent Activity Unique ID\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write("A-" + (i+1) + ", " + "Session " + (i+1) + ", " + fake.company.catchPhrase() + ", " + ", " + ", " + ", " + "Start Time" + ", " + "End Time" + ", " + fake.hacker.adjective() + ", " + "\n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Appointments':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Emails,Attendee Unique IDs,Appointment Name,Description,Start Time,End Time,Location Name\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write ("Fix\n");
+                  //stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + Company() + ", " + Job() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", \n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Invitations':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,\
+                           Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2,\
+                           City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL,\
+                           Group List (comma-separated)\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + Company() + ", " + Job() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", \n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Locations':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Name,Description,Address,Address 2,City,State,Country,Zipcode,Phone Work,Phone Mobile, Phone Other,Phone Other Type,Email,Email 2,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Always show this location on the map?\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write("A-" + (i+1) + ", " + FullName() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Organizations':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),\
+                           Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,\
+                           Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,\
+                           Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write("A-" + (i+1) + ", " + fake.hacker.ingverb() + ", " + fake.hacker.noun() + ", " + fake.company.catchPhrase() + ", " + ", " + "FALSE, " + URL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Pages':
+          userInput = +process.argv[2];
+            fake.locale = "zh_CN"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Name,Description,Category Tags (Comma-separated)\n");
+              for (i=0; i<userInput; i++) {
+                stream.write("A-" + (i+1) +", "+ ", " + "<p>" + fake.company.catchPhrase() + "<br></p>" +", \n");
+              }
+              stream.end();
+              console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'People':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,First Name,Last Name,Display Name,Title,Bio,Email,Email 2,Organization Name,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Tags (comma-separated),Linkedin URL,Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
+
+              for (i=0; i<userInput; i++) {
+                stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + DisplayName() + ", " + Job() + ", " + fake.hacker.ingverb() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + CompanyName() + ", " + URL() + ", " + URL() + ", " + fake.address.streetAddress() + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + ",\n");
+              }
+              stream.end();
+              console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Schedules':
+          userInput = +process.argv[2];
+            fake.locale = "zh_CN"; // manual entry for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Name,Description,Category Tags (Comma-separated)\n");
+              for (i=0; i<userInput; i++) {
+                stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add" +", \n");
+              }
+              stream.end();
+              console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        default:
+        console.log('Usage: kittens, puppies, coffee');
+    }
+};
+
+if (!process.argv[2]) {
+  console.log("Usage: kittens, puppies, or coffee");
+} else {
+  userInput = process.argv[2];
+  console.log(getReview(userInput));
+}
+
+
 if (!process.argv[2] || isNaN(+process.argv[2])) {
   console.log("Usage: csvGen #(records) locale");
   console.log("---------------------------------");
