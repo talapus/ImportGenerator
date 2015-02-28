@@ -20,12 +20,12 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 
-var getReview = function (file) {
+var generateFile = function (file) {
     switch (file) {
 
         case 'Activities':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -41,14 +41,14 @@ var getReview = function (file) {
 
         case 'Appointments':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
               stream.write("Unique ID,Emails,Attendee Unique IDs,Appointment Name,Description,Start Time,End Time,Location Name\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write ("Fix\n");
+                  stream.write ("Fix\n"); // requires start time/end time logic
                   //stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + Company() + ", " + Job() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + URL() + ", " + URL() + ", " + ", " + ", " + ", \n");
                 }
                 stream.end();
@@ -58,7 +58,7 @@ var getReview = function (file) {
 
         case 'Invitations':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -77,7 +77,7 @@ var getReview = function (file) {
 
         case 'Locations':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -93,7 +93,7 @@ var getReview = function (file) {
 
         case 'Organizations':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -112,7 +112,7 @@ var getReview = function (file) {
 
         case 'Pages':
           userInput = +process.argv[2];
-            fake.locale = "zh_CN"; // manual entry for now
+            fake.locale = "zh_CN"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -127,7 +127,7 @@ var getReview = function (file) {
 
         case 'People':
           userInput = +process.argv[2];
-            fake.locale = "en"; // manual entry for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -143,7 +143,7 @@ var getReview = function (file) {
 
         case 'Schedules':
           userInput = +process.argv[2];
-            fake.locale = "zh_CN"; // manual entry for now
+            fake.locale = "zh_CN"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -157,27 +157,24 @@ var getReview = function (file) {
         break;
 
         default:
-        console.log('Usage: kittens, puppies, coffee');
+        console.log('Error, default case. Should not print');
     }
 };
 
-if (!process.argv[2]) {
-  console.log("Usage: kittens, puppies, or coffee");
-} else {
-  userInput = process.argv[2];
-  console.log(getReview(userInput));
-}
-
-
-if (!process.argv[2] || isNaN(+process.argv[2])) {
-  console.log("Usage: csvGen #(records) locale");
+if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
+  console.log("Usage: csvGen #(rows) Type");
   console.log("---------------------------------");
-  //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // maybe later
-  console.log("Imports | Invitees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
+  //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
+  console.log("Types: | Invitations, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
 
+} else { // only write a file if the user indicates how many records and file type
+  fileType = process.argv[3];
+  generateFile(fileType);
+}
+  /*
 } else { // only write a file if the user indicates how many records
   userInput = +process.argv[2];
-    fake.locale = "en"; // locale is manual entry for now
+    fake.locale = "en"; // the product only supports English for now
     var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
     stream.once('open', function(fd) {
@@ -193,3 +190,4 @@ if (!process.argv[2] || isNaN(+process.argv[2])) {
         console.log(fake.locale +"_"+ fileType + ".csv created");
     });
 }
+*/
