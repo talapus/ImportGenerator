@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+var fake = require('faker');
+var fs = require('fs');
+
+// var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+// var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+var fileType = "invitees"; // global until the logic is added for other types
+var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
+var CompanyName = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
+var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
+var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
+var DisplayName = function() { return (fake.company.catchPhraseAdjective() + fake.hacker.noun())};
+var getSpecialism = function() {
+  specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
+  return (specialists[Math.floor(Math.random() * specialists.length)]);
+}
+var yesOrNo = function() {
+  options = ["Yes", "No"];
+  return options[Math.floor(Math.random() *2)];
+}
+
+if (!process.argv[2] || isNaN(+process.argv[2])) {
+  console.log("Usage: csvGen #(records) locale");
+  console.log("---------------------------------");
+  //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // maybe later
+  console.log("Imports | Invitees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
+
+} else { // only write a file if the user indicates how many records
+  userInput = +process.argv[2];
+    fake.locale = "en"; // locale is manual entry for now
+    var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+    stream.once('open', function(fd) {
+      stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,\
+                   Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2,\
+                   City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL,\
+                   Group List (comma-separated)\n");
+
+        for (i=0; i<userInput; i++) {
+          stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + CompanyName() + ", " + OddJob() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
+        }
+        stream.end();
+        console.log(fake.locale +"_"+ fileType + ".csv created");
+    });
+}
