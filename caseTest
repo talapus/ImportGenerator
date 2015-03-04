@@ -26,7 +26,7 @@ var getThing = function (fileType) {
 };
 
 var showUsage = function() {
-  console.log("Usage: kitten, puppy, or coffee");
+  console.log("Usage: #(rows) key(kitten, puppy, coffee)");
 }
 
 if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
