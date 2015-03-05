@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+//functions
+var printLine = function (numLines, thing) {
+  for (var i=0; i<numLines; i++) {
+    console.log(getThing(thing));
+  }
+}
+
+var getThing = function (fileType) {
+    switch (fileType) {
+        case 'kitten':
+        return('Purr');
+        break;
+
+        case 'puppy':
+        return('Woof.');
+        break;
+
+        case 'coffee':
+        return(String.fromCharCode(0x0000,0x2615));
+        break;
+
+        default:
+        showUsage();
+    }
+};
+
+var showUsage = function() {
+  console.log("Usage: #(rows) key(kitten, puppy, coffee)");
+}
+
+// main
+if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
+  showUsage();
+} else {
+  numLines = +process.argv[2];
+  thing = process.argv[3];
+  printLine(numLines, thing);
+}
