@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var fake = require('faker');
+var fs = require('fs');
+
+// var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+// var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+var getSpecialism = function() {
+  specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
+  return (specialists[Math.floor(Math.random() * specialists.length)]);
+}
+var URL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
+var Company = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
+var Job = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
+var fileType = "organizations"; // global until the logic is added for other types
+
+if (!process.argv[2] || isNaN(+process.argv[2])) {
+  console.log("Usage: generateOrganizations # "); //locale import")
+
+} else { // only write a file if the user indicates how many records
+  userInput = +process.argv[2];
+    fake.locale = "en"; // manual entry for now
+    var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+    stream.once('open', function(fd) {
+      stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),\
+                   Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,\
+                   Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,\
+                   Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
+
+        for (i=0; i<userInput; i++) {
+          stream.write("A-" + (i+1) + ", " + fake.hacker.ingverb() + ", " + fake.hacker.noun() + ", " + fake.company.catchPhrase() + ", " + ", " + "FALSE, " + URL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
+        }
+        stream.end();
+        console.log(fake.locale +"_"+ fileType + ".csv created");
+    });
+}

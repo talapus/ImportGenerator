@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var fake = require('faker');
+var fs = require('fs');
+
+// var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+var fileType = "schedules"; // global until the logic is added for other types
+
+if (!process.argv[2] || isNaN(+process.argv[2])) {
+  console.log("Usage: generateSchedules # "); //locale import")
+
+} else { // only write a file if the user indicates how many records
+  userInput = +process.argv[2];
+    fake.locale = "zh_CN"; // manual entry for now
+    var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+    stream.once('open', function(fd) {
+      stream.write("Unique ID,Name,Description,Category Tags (Comma-separated)\n");
+      for (i=0; i<userInput; i++) {
+        stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add" +", \n");
+      }
+      stream.end();
+      console.log(fake.locale +"_"+ fileType + ".csv created");
+    });
+}
