@@ -20,11 +20,11 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("Usage: csvGen #(rows) type(Invitations, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages)");
+  console.log("Usage: csvGen #(rows) type(Attendees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages)");
   //console.log("Usage: csvGen #(rows) Type");
   //console.log("---------------------------------");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
-  //console.log("Types: | Invitations, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
+  //console.log("Types: | Attendees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
 }
 
 var generateFile = function (file) {
@@ -63,16 +63,13 @@ var generateFile = function (file) {
             });
         break;
 
-        case 'Invitations':
+        case 'Attendees':
           userInput = +process.argv[2];
             fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,\
-                           Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2,\
-                           City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL,\
-                           Group List (comma-separated)\n");
+              stream.write("Unique ID, First Name, Last Name, Email, Registration Code, Show on Attendee List, Company Name,Job Title, Brief Bio, Work Phone, Mobile Phone, Other Phone, Other Phone Type, Address, Address 2,City, State, Zipcode, Country, Website, Website 2, Linkedin URL, Twitter URL, Facebook URL,Group List (comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
                   stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + CompanyName() + ", " + OddJob() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
@@ -88,7 +85,7 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID,Name,Description,Address,Address 2,City,State,Country,Zipcode,Phone Work,Phone Mobile, Phone Other,Phone Other Type,Email,Email 2,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Always show this location on the map?\n");
+              stream.write("Unique ID,Name,Description,Address,Address 2,City,State,Country,Zipcode,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Always show this location on the map?\n");
 
                 for (i=0; i<userInput; i++) {
                   stream.write("A-" + (i+1) + ", " + FullName() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
@@ -104,10 +101,7 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),\
-                           Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,\
-                           Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,\
-                           Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
+              stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
                   stream.write("A-" + (i+1) + ", " + fake.hacker.ingverb() + ", " + fake.hacker.noun() + ", " + fake.company.catchPhrase() + ", " + ", " + "FALSE, " + RandomURL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
