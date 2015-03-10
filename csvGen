@@ -20,7 +20,7 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("Usage: csvGen #(rows) type(Attendees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages)");
+  console.log("Usage: csvGen #(rows) type(Attendees, Appointments, Organizations, Activities, People, Locations, Tracks, Pages)");
   //console.log("Usage: csvGen #(rows) Type");
   //console.log("---------------------------------");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
@@ -148,7 +148,7 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Email, Attendee Unique ID,Activity Unique ID, Change" + "\n");
+              stream.write("Email,Attendee Unique ID,Activity Unique ID,Change" + "\n");
               for (i=0; i<userInput; i++) {
                 stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add" +", \n");
               }
