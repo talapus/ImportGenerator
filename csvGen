@@ -157,6 +157,22 @@ var generateFile = function (file) {
             });
         break;
 
+        case 'Tracks':
+          userInput = +process.argv[2];
+            fake.locale = "en"; // the product only supports English for now
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,Name,Sequence Number,Track Groups (comma-separated)\n");
+
+                for (i=0; i<userInput; i++) {
+                  stream.write("A-" + (i+1) + ", " + fake.name.lastName() + ", " + "\n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
         default:
         showUsage();
     }
