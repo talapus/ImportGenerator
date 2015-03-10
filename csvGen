@@ -117,9 +117,9 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID,Name,Description,Category Tags (Comma-separated)\n");
+              stream.write("Unique ID,Name,Description,Category Tags (Comma-separated),Group List (comma-separated)\n");
               for (i=0; i<userInput; i++) {
-                stream.write("A-" + (i+1) +", "+ ", " + "<p>" + fake.company.catchPhrase() + "<br></p>" +", \n");
+                stream.write("A-" + (i+1) + ", " + fake.name.lastName() + ", " + "<p>" + fake.company.catchPhrase() + "<br></p>" +", \n");
               }
               stream.end();
               console.log(fake.locale +"_"+ fileType + ".csv created");
