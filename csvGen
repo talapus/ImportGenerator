@@ -20,7 +20,7 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("Usage: csvGen #(rows) type(Attendees, Organizations, Activities, People, Locations, Tracks, Pages)");
+  console.log("Usage: csvGen #(rows) type(Attendees, Organizations, People, Locations, Tracks, Pages)");
   //console.log("Usage: csvGen #(rows) Type");
   //console.log("---------------------------------");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
@@ -69,7 +69,7 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID,First Name,Last Name,Suffix,Email,Registration Code,Show on Attendee List,Company Name,Job Title,Brief Bio,Work Phone,Mobile Phone,Other Phone,Other Phone Type,Address,Address 2,City,State,Zipcode,Country,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Group List (comma-separated)" + "\n");
+              stream.write("Unique ID,First Name,Last Name,Suffix,Email,Registration Code,Show on Attendee List,Company Name,Job Title,Brief Bio,Work Phone,Mobile Phone,Other Phone,Other Phone Type,Address,Address 2,City,State,Zipcode,Country,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Group List (comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
                   stream.write("A-" + (i+1) + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + ", " + fake.internet.email() + ", " + ", " + "FALSE, " + CompanyName() + ", " + OddJob() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
