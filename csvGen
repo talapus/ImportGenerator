@@ -20,7 +20,7 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("Usage: csvGen #(rows) type(Attendees, Appointments, Organizations, Activities, People, Locations, Tracks, Pages)");
+  console.log("Usage: csvGen #(rows) type(Attendees, Organizations, Activities, People, Locations, Tracks, Pages)");
   //console.log("Usage: csvGen #(rows) Type");
   //console.log("---------------------------------");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
