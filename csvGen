@@ -148,7 +148,7 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Unique ID,Name,Description,Category Tags (Comma-separated)\n");
+              stream.write("Email, Attendee Unique ID,Activity Unique ID, Change" + "\n");
               for (i=0; i<userInput; i++) {
                 stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add" +", \n");
               }
