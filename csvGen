@@ -20,11 +20,12 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("Usage: csvGen #(rows) type(Activities, Attendees, Locations, Organizations, People, Pages, Tracks)");
-  //console.log("Usage: csvGen #(rows) Type");
-  //console.log("---------------------------------");
+  //console.log("Usage: csvGen #(rows) type(Activities, Attendees, Locations, Organizations, People, Pages, Tracks)");
+  console.log("\nUsage: csvGen # Type");
+  console.log("---------------------------------");
+  console.log("#\t| Number of rows");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
-  //console.log("Types: | Attendees, Schedules, Appointments, Organizations, Activities, People, Locations, Tracks, Pages");
+  console.log("Types\t| Activities, Attendees, Locations, Organizations, Pages, People, Schedules, Tracks");
 }
 
 var generateFile = function (file) {
