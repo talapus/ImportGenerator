@@ -25,7 +25,7 @@ var showUsage = function() {
   console.log("---------------------------------");
   console.log("#\t| Number of rows");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
-  console.log("Types\t| Activities, Attendees, Locations, Organizations, Pages, People, Schedules, Tracks");
+  console.log("Types\t| Activities, Appointments, Attendees, Locations, Organizations, Pages, People, Schedules, Tracks");
 }
 
 var generateFile = function (file) {
@@ -57,7 +57,7 @@ var generateFile = function (file) {
 
                 for (i=0; i<userInput; i++) {
                   //stream.write ("Fix\n"); // requires start time/end time logic
-                  stream.write("A-" + (i+1) + ", " + fake.internet.email() + ", " + "E-" + (i+1) + ", " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", START TIME" + ", END TIME" + ", " + fake.company.catchPhrase() + "\n");
+                  stream.write("A-" + (i+1) + ", " + fake.internet.email() + ", " + "E-" + (i+1) + ", " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + fake.date.past() + ", " + fake.date.future() + ", " + fake.company.catchPhrase() + "\n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
