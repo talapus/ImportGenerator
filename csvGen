@@ -7,10 +7,10 @@ var fs = require('fs');
 // var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
 var fileType = "invitees"; // global until the logic is added for other types
 var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
-var CompanyName = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
-var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + getSpecialism()) };
+var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
-var DisplayName = function() { return (fake.company.catchPhraseAdjective() + " " + fake.hacker.noun())};
+var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
+var CompanyName = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
 var getSpecialism = function() {
   specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
   return (specialists[Math.floor(Math.random() * specialists.length)]);
@@ -104,7 +104,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write("A-" + (i+1) + ", " + fake.hacker.ingverb() + ", " + fake.hacker.noun() + ", " + fake.company.catchPhrase() + ", " + ", " + "FALSE, " + RandomURL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
+                  stream.write("A-" + (i+1) + ", " + CompanyName() + ", " + DisplayName() + ", " + fake.company.catchPhrase() + ", " + ", " + "FALSE, " + RandomURL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
