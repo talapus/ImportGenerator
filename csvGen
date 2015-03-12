@@ -5,7 +5,7 @@ var fs = require('fs');
 
 // var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
 // var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
-var fileType = "invitees"; // global until the logic is added for other types
+//var fileType = "invitees"; // global until the logic is added for other types
 var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
@@ -20,7 +20,6 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  //console.log("Usage: csvGen #(rows) type(Activities, Attendees, Locations, Organizations, People, Pages, Tracks)");
   console.log("\nUsage: csvGen # Type");
   console.log("---------------------------------");
   console.log("#\t| Number of rows");
