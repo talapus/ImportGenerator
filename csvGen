@@ -64,7 +64,7 @@ var generateFile = function (file) {
 
         case 'Attendees':
           userInput = +process.argv[2];
-            fake.locale = "en"; // the product only supports English for now
+            fake.locale = "zh_CN"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
