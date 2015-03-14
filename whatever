@@ -19,7 +19,7 @@ var yesOrNo = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var showUsage = function() {
-  console.log("\nUsage: csvGen # Type");
+  console.log("\nUsage: ImportGenerator # Type");
   console.log("---------------------------------");
   console.log("#\t| Number of rows");
   //console.log("Locales | de, en, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN"); // no L10N support yet
