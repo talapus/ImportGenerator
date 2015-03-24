@@ -171,6 +171,10 @@ if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
   showUsage();
 } else { // only write a file if the user indicates how many records and file type
   fileType = process.argv[3];
-  fake.locale = process.argv[4];
+  if (!process.argv[4]) {
+    fake.locale = "en"; 
+  } else {
+    fake.locale = process.argv[4];
+  }
   generateFile(fileType);
 }
