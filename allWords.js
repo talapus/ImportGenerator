@@ -3,7 +3,7 @@
 var fake = require('faker');
 
 var showUsage = function() {
-  console.log("Usage");
+  console.log("Words: #");
 }
 
 if (!process.argv[2] || isNaN(+process.argv[2])) {
