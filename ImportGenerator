@@ -18,6 +18,9 @@ var yesOrNo = function() {
   options = ["Yes", "No"];
   return options[Math.floor(Math.random() *2)];
 }
+var 15kBio = function() {
+  return
+}
 var showUsage = function() {
   console.log("\nUsage: ImportGenerator # Type");
   console.log("---------------------------------");
@@ -64,7 +67,7 @@ var generateFile = function (file) {
 
         case 'Attendees':
           userInput = +process.argv[2];
-            fake.locale = "zh_CN"; // the product only supports English for now
+            fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
