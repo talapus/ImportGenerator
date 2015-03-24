@@ -31,7 +31,6 @@ var generateFile = function (file) {
 
         case 'Activities':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -47,14 +46,12 @@ var generateFile = function (file) {
 
         case 'Appointments':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
               stream.write("Unique ID,Emails,Attendee Unique IDs,Appointment Name,Description,Start Time,End Time,Location Name\n");
 
                 for (i=0; i<userInput; i++) {
-                  //stream.write ("Fix\n"); // requires start time/end time logic
                   stream.write("A-" + (i+1) + ", " + fake.internet.email() + ", " + "E-" + (i+1) + ", " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + fake.date.past() + ", " + fake.date.future() + ", " + fake.company.catchPhrase() + "\n");
                 }
                 stream.end();
@@ -64,7 +61,6 @@ var generateFile = function (file) {
 
         case 'Attendees':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -80,7 +76,6 @@ var generateFile = function (file) {
 
         case 'Locations':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -96,7 +91,6 @@ var generateFile = function (file) {
 
         case 'Organizations':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -112,7 +106,6 @@ var generateFile = function (file) {
 
         case 'Pages':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -127,7 +120,6 @@ var generateFile = function (file) {
 
         case 'People':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -143,7 +135,6 @@ var generateFile = function (file) {
 
         case 'Schedules':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
@@ -158,7 +149,6 @@ var generateFile = function (file) {
 
         case 'Tracks':
           userInput = +process.argv[2];
-            //fake.locale = "en"; // the product only supports English for now
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
