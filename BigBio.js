@@ -2,6 +2,11 @@
 
 var fake = require('faker')
 
+var showUsage = function() {
+  console.log("BigBio: #");
+}
+
+
 /* old experiments
 
 //var fake = require('faker');
@@ -27,3 +32,13 @@ BigBio();
 
 var names = [];
 var BigBio = function() {for (var i=0; i<30; i++) {console.log(fake.name.firstName())}}
+
+if (!process.argv[2] || isNaN(+process.argv[2])) {
+  showUsage();
+} else {
+  numWords = +process.argv[2];
+  var allWords = fake.lorem.words(numWords);
+  for (var i=0; i<allWords.length; i++) {
+    console.log(allWords[i]);
+  };
+}
