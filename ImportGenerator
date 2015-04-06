@@ -36,13 +36,15 @@ var generateFile = function (file) {
 
         case 'Activities':
           userInput = +process.argv[2];
+          randomTrack = fake.company.catchPhrase(); // persistent for all Tracks within one import file
+          randomTag = fake.company.catchPhrase(); // persistent for all Tags within one import file
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
               stream.write("Unique ID,Name,Description,Activity Code,Track,Tags (comma-separated),Start Time,End Time,Location Name,Parent Activity Unique ID\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write(fake.random.uuid() + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + ", " + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
+                  Ustream.write(fake.random.uuid() + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + randomTrack + ", " + randomTag + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
