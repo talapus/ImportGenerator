@@ -104,7 +104,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,Organization name,Location Name,Description,Category Tags (Comma-separated),Is Highlighted?,Website,Website 2,Address,Address 2,City,State,Zipcode,Country,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Linkedin URL,Twitter URL,Facebook URL,Admin Invitations (Comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write(fake.random.uuid() + ", " + CompanyName() + ", " + DisplayName() + ", " + fake.company.catchPhrase() + ", " + ", " + TrueOrFalse() + ", " + RandomURL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", \n");
+                  stream.write(fake.random.uuid() + ", " + CompanyName() + ", " + DisplayName() + ", " + fake.company.catchPhrase() + ", " + ", " + TrueOrFalse() + ", " + RandomURL() + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + ", " + "\n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
