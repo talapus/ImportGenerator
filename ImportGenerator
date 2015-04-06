@@ -44,7 +44,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,Name,Description,Activity Code,Track,Tags (comma-separated),Start Time,End Time,Location Name,Parent Activity Unique ID\n");
 
                 for (i=0; i<userInput; i++) {
-                  Ustream.write(fake.random.uuid() + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + randomTrack + ", " + randomTag + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
+                  stream.write(fake.random.uuid() + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + randomTrack + ", " + randomTag + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
