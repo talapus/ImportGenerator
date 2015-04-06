@@ -44,7 +44,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,Name,Description,Activity Code,Track,Tags (comma-separated),Start Time,End Time,Location Name,Parent Activity Unique ID\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write(fake.random.uuid() + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + randomTrack + ", " + randomTag + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
+                  stream.write("A-" + (i+1) + ", " + "Session " + (i+1) + ": " + fake.company.catchPhrase() + ", " + fake.company.catchPhrase() + ", " + ", " + randomTrack + ", " + randomTag + ", " + fake.date.past() + ", " + fake.date.future() + ", " + DisplayName() + ", " + "\n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
@@ -145,9 +145,10 @@ var generateFile = function (file) {
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
             stream.once('open', function(fd) {
-              stream.write("Email,Attendee Unique ID,Activity Unique ID,Change" + "\n");
+              stream.write("Email,Attendee Unique ID,Activity Unique ID,Change\n");
               for (i=0; i<userInput; i++) {
-                stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add" +", \n");
+                //stream.write(fake.internet.email() + ", " + "U-" + (i+1) + ", " + "A-" + (i+1) + ", " + "add\n");
+                stream.write(fake.internet.email() + ", " + ", " + "A-" + (i+1) + ", " + "add\n");
               }
               stream.end();
               console.log(fake.locale +"_"+ fileType + ".csv created");
