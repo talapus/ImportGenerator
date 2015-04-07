@@ -22,7 +22,7 @@ var userBio = function(input) {
   for (var i=0; i<bioSize(); i++) {
     wordArray[i] = fake.hacker.noun();
   };
-  console.log(wordArray + " ");
+  return(wordArray);
 }
 
-userBio();
+console.log(userBio());
