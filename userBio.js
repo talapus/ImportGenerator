@@ -2,17 +2,7 @@
 
 var fake = require('faker');
 
-/*
-var showUsage = function() {
-  console.log("wordArray: #");
-}
-
-var bioSize = function() {
-    return (Math.floor(Math.random() * 1500) +1)
-}
-*/
-
-var userBio = function(input) {
+var randomBio = function(input) {
   wordArray = [];
 
   var bioSize = function() {
@@ -22,13 +12,9 @@ var userBio = function(input) {
   for (var i=0; i<bioSize(); i++) {
     wordArray[i] = fake.hacker.noun();
   };
-  return(wordArray);
+  rawBio = wordArray.toString();
+  userBio = rawBio.replace(/,/g, " ");
+  return userBio;
 }
 
-someBio = userBio();
-rawBio = wordArray.toString();
-finalBio = rawBio.replace(/,/g, " ");
-
-console.log(finalBio);
-
-//console.log(userBio());
+console.log(randomBio());
