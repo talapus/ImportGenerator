@@ -22,12 +22,6 @@ var TrueOrFalse = function() {
   options = ["TRUE", "FALSE"];
   return options[Math.floor(Math.random() *2)];
 }
-
-var userBio = function() {
-  return (fake.company.catchPhrase());
-}
-
-/*
 var userBio = function(input) {
   wordArray = [];
 
@@ -38,9 +32,10 @@ var userBio = function(input) {
   for (var i=0; i<bioSize(); i++) {
     wordArray[i] = fake.hacker.noun();
   };
-  return(wordArray + " ");
+  rawBio = wordArray.toString();
+  finalBio = rawBio.replace(/,/g, " ");
+  return finalBio;
 }
-*/
 
 var showUsage = function() {
   console.log("\nUsage: ImportGenerator # Type Locale");
@@ -93,7 +88,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,First Name,Last Name,Suffix,Email,Registration Code,Show on Attendee List,Company Name,Job Title,Brief Bio,Work Phone,Mobile Phone,Other Phone,Other Phone Type,Address,Address 2,City,State,Zipcode,Country,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Group List (comma-separated)\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write(fake.random.uuid() + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + ", " + fake.internet.email() + ", " + ", " + TrueOrFalse() + ", " + CompanyName() + ", " + OddJob() + ", " + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
+                  stream.write(fake.random.uuid() + ", " + fake.name.firstName() + ", " + fake.name.lastName() + ", " + ", " + fake.internet.email() + ", " + ", " + TrueOrFalse() + ", " + CompanyName() + ", " + OddJob() + ", " + userBio() + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
