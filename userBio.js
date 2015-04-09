@@ -25,4 +25,10 @@ var userBio = function(input) {
   return(wordArray);
 }
 
-console.log(userBio());
+someBio = userBio();
+rawBio = wordArray.toString();
+finalBio = rawBio.replace(/,/g, " ");
+
+console.log(finalBio);
+
+//console.log(userBio());
