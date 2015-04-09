@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+// requirements
 var fake = require('faker');
 var fs = require('fs');
 
-// var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
-// var locales = ['de','en','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+// functions
 var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
@@ -44,6 +44,8 @@ var showUsage = function() {
   console.log("Types\t| Activities, Appointments, Attendees, Locations, Organizations, Pages, People, Schedules, Tracks");
   console.log("Locales | en(default), de, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
 }
+
+// file generation case statements
 
 var generateFile = function (file) {
     switch (file) {
@@ -189,6 +191,8 @@ var generateFile = function (file) {
     }
 };
 
+// main
+
 if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
   showUsage();
 } else { // only write a file if the user indicates how many records and file type
@@ -200,3 +204,6 @@ if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
   }
   generateFile(fileType);
 }
+
+// var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
+
