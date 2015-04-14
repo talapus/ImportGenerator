@@ -9,7 +9,8 @@ var RandomURL = function() { return("http://www." + fake.internet.domainName() +
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
 var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
-var CompanyName = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
+//var CompanyName = function() { return(fake.company.bsAdjective() +" "+ fake.company.bsNoun())};
+var CompanyName = function() { return(fake.company.catchPhrase()); };
 var getSpecialism = function() {
   specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
   return (specialists[Math.floor(Math.random() * specialists.length)]);
