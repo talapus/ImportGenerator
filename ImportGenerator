@@ -23,12 +23,11 @@ var TrueOrFalse = function() {
   return options[Math.floor(Math.random() *2)];
 }
 var userBio = function(input) {
-  wordArray = [];
-
-  var bioSize = function() {
+  var bioSize = function() { // random bioSize
     return (Math.floor(Math.random() * 1500) +1)
   }
 
+  var wordArray = new Array(); // make an array of words
   for (var i=0; i<bioSize(); i++) {
     wordArray[i] = fake.hacker.noun();
   };
