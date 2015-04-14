@@ -5,7 +5,7 @@ var fake = require('faker');
 var fs = require('fs');
 
 // functions
-var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1)); };
+var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1) +"/"+ fake.lorem.words(1)); };
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
 var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
