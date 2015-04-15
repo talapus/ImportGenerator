@@ -42,7 +42,7 @@ var showUsage = function() {
   console.log("\nUsage: ImportGenerator # Type Locale");
   console.log("---------------------------------");
   console.log("#\t| Number of rows");
-  console.log("Types\t| Activities, Appointments, Attendees, Locations, Organizations, Pages, People, Schedules, Tracks");
+  console.log("Types\t| Activities, Appointments, Attendees, Attendees-CC, Locations, Organizations, Pages, People, Schedules, Tracks");
   console.log("Locales | en(default), de, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
 }
 
@@ -83,7 +83,7 @@ var generateFile = function (file) {
             });
         break;
 
-        case 'Attendees':
+        case 'Attendees-CC':
           userInput = +process.argv[2];
             var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
 
@@ -96,6 +96,25 @@ var generateFile = function (file) {
                 var attendeeEmail = "ccbughunt+" + attendeeFirstName + attendeeLastName + fake.random.number(9999999) + "@gmail.com"
 
                   stream.write(fake.random.uuid() + ", " + attendeeFirstName + ", " + attendeeLastName + ", " + ", " + attendeeEmail + ", " + ", " + TrueOrFalse() + ", " + CompanyName() + ", " + OddJob() + ", " + userBio() + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
+                }
+                stream.end();
+                console.log(fake.locale +"_"+ fileType + ".csv created");
+            });
+        break;
+
+        case 'Attendees':
+          userInput = +process.argv[2];
+            var stream = fs.createWriteStream(fake.locale +"_"+ fileType + ".csv");
+
+            stream.once('open', function(fd) {
+              stream.write("Unique ID,First Name,Last Name,Suffix,Email,Registration Code,Show on Attendee List,Company Name,Job Title,Brief Bio,Work Phone,Mobile Phone,Other Phone,Other Phone Type,Address,Address 2,City,State,Zipcode,Country,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Group List (comma-separated)\n");
+
+                for (i=0; i<userInput; i++) {
+                var attendeeFirstName = fake.name.firstName();
+                var attendeeLastName = fake.name.lastName();
+                var attendeeEmail = "ccbughunt+" + attendeeFirstName + attendeeLastName + fake.random.number(9999999) + "@gmail.com"
+
+                  stream.write(fake.random.uuid() + ", " + attendeeFirstName + ", " + attendeeLastName + ", " + ", " + ", " + i + ", " + TrueOrFalse() + ", " + CompanyName() + ", " + OddJob() + ", " + userBio() + ", " + fake.phone.phoneNumber() + ", " + ", " + ", " + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + fake.address.zipCode() + ", " + fake.address.country() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", \n");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
@@ -214,4 +233,3 @@ if (!process.argv[2] || isNaN(+process.argv[2]) || !process.argv[3]) {
 }
 
 // var All_locales = ['de', 'de_AT','de_CH','en','en_AU','en_BORK','en_CA','en_GB','en_IND','en_US','en_au_ocker','es','fa','fr','it','ja','ko','nb_NO','nep','nl','pl','pt_BR','ru','sk','sv','vi','zh_CN'];
-
