@@ -9,7 +9,7 @@ var RandomURL = function() { return("http://www." + fake.internet.domainName() +
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
 var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
-var CompanyName = function() { return(fake.lorem.words(1).toString() + " " + fake.lorem.words(1).toString()); };
+var CompanyName = function() { return(fake.lorem.words(1).toString() + " " + fake.lorem.words(1).toString() + " " + CompanySuffix()); };
 var getSpecialism = function() {
   specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
   return (specialists[Math.floor(Math.random() * specialists.length)]);
@@ -32,6 +32,10 @@ var userBio = function(input) {
     wordArray[i] = fake.hacker.noun();
   };
   return(wordArray.toString().replace(/,/g, " "));
+}
+var CompanySuffix = function() {
+  options = ["Inc.", "LLC", "by Cvent"];
+  return options[Math.floor(Math.random() *3)];
 }
 
 var showUsage = function() {
