@@ -7,8 +7,9 @@ var fs = require('fs');
 // functions
 var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1) +"/"+ fake.lorem.words(1)); };
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
-var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
+//var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
 var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
+var LocationName = function() { return (fake.lorem.words(1).toString() + " " + fake.lorem.words(1).toString()); };
 var CompanyName = function() { return(fake.lorem.words(1).toString() + " " + fake.hacker.ingverb() + " " + CompanySuffix()); };
 var getSpecialism = function() {
   specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
@@ -129,7 +130,7 @@ var generateFile = function (file) {
               stream.write("Unique ID,Name,Description,Address,Address 2,City,State,Country,Zipcode,Phone Work,Phone Mobile,Phone Other,Phone Other Type,Email,Email 2,Website,Website 2,Linkedin URL,Twitter URL,Facebook URL,Always show this location on the map?\n");
 
                 for (i=0; i<userInput; i++) {
-                  stream.write(fake.random.uuid() + ", " + FullName() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
+                  stream.write(fake.random.uuid() + ", " + LocationName() + ", " + fake.company.catchPhrase() + ", " + fake.address.streetAddress() + ", " + ", " + fake.address.city() + ", " + fake.address.state() + ", " + ", " + fake.address.zipCode() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.phone.phoneNumber() + ", " + fake.internet.email() + ", " + fake.internet.email() + ", " + RandomURL() + ", " + RandomURL() + ", " + ", " + ", " + ", " + yesOrNo() + "\n ");
                 }
                 stream.end();
                 console.log(fake.locale +"_"+ fileType + ".csv created");
