@@ -10,7 +10,7 @@ var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.
 //var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
 var DisplayName = function() { return (fake.company.catchPhraseAdjective() +" "+ fake.hacker.noun())};
 var LocationName = function() { return (fake.lorem.words(1).toString() + "-" + fake.lorem.words(1).toString()); };
-var CompanyName = function() { return(fake.lorem.words(1).toString() + " " + fake.hacker.ingverb() + " " + CompanySuffix()); };
+var CompanyName = function() { return(fake.lorem.words(1).toString() + " " + fake.company.bsAdjective() + " " + fake.hacker.noun()); };
 var getSpecialism = function() {
   specialists = ["Specialist", "Professional", "Executive", "Engineer", "Technician"];
   return (specialists[Math.floor(Math.random() * specialists.length)]);
