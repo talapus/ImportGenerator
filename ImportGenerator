@@ -43,7 +43,7 @@ var showUsage = function() {
   console.log("\nUsage: ImportGenerator # Type Locale");
   console.log("---------------------------------");
   console.log("#\t| Number of rows");
-  console.log("Types\t| Activities, Appointments, Attendees, Attendees-CC, Locations, Organizations, Pages, People, Schedules, Tracks");
+  console.log("Types\t| Appointments, Attendees, Attendees-CC, Locations, Organizations, Pages, People, Schedules, Sessions, Tracks");
   console.log("Locales | en(default), de, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
 }
 
@@ -52,7 +52,7 @@ var showUsage = function() {
 var generateFile = function (file) {
     switch (file) {
 
-        case 'Activities':
+        case 'Sessions':
           userInput = +process.argv[2];
           randomTrack = fake.company.catchPhrase(); // persistent for all Tracks within one import file
           randomTag = fake.company.catchPhrase(); // persistent for all Tags within one import file
