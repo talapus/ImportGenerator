@@ -5,6 +5,10 @@ var fake = require('faker');
 var fs = require('fs');
 
 // functions
+function Randomize(input) {
+  anArray = input.split(', ');
+  return anArray[Math.floor(Math.random() * anArray.length)];
+}
 var RandomURL = function() { return("http://www." + fake.internet.domainName() +"/"+ fake.lorem.words(1) +"/"+ fake.lorem.words(1)); };
 var OddJob = function() { return(fake.company.catchPhraseAdjective() +" "+ fake.company.catchPhraseNoun() + " " + getSpecialism()) };
 //var FullName = function() { return (fake.name.firstName() + " " + fake.name.lastName()) };
@@ -45,7 +49,7 @@ var showUsage = function() {
   console.log("#\t| Number of rows");
   console.log("Types\t| Appointments, Attendees, Attendees-CC, Locations, Organizations, Pages, People, Schedules, Sessions, Tracks");
   console.log("Locales | en(default), de, es, fa, fr, it, ja, ko, nb_NO, nep, nl, pl, pt_BR, ru, sk, sv, vi, zh_CN");
-  console.log("\nVersion 1.0.0929042015");
+  console.log("\nVersion 1.0.0929062015");
 }
 
 // file generation case statements
